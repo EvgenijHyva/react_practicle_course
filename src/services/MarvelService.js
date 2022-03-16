@@ -35,7 +35,6 @@ class MarvelService {
     getCharacters = async (limit) => {
         let res = await this.getByAxios(`${this._apiBase}characters?limit=${limit}&offset=${this.offset}&${this._apiKey}`)
         this.offset += limit;
-        console.log(res)
         return res.data.results.map(this._transformCharacter);
     }
     getCharacterByID = async (id) => {

@@ -36,8 +36,6 @@ class CharInfo extends Component {
         this.marvelService.getCharacterByID(charId)
             .then(this.onCharLoaded)
             .catch(this.onError)
-        
-            this.goo.gaw = 0;
     }
 
     onCharLoaded = (char) => {
