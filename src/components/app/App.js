@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-import ErrorBoundary from "../error-boundary/ErrrorBoundary";
+import ErrorBoundary from "../error-boundary/ErrorBoundary";
 import AppHeader from "../appHeader/AppHeader";
 import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
