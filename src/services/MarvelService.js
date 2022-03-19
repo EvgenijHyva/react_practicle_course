@@ -8,10 +8,10 @@ class MarvelService {
             url: '',
             method: 'get' 
         }; 
-        this.offset = 0;
     }
     _apiBase = "https://gateway.marvel.com:443/v1/public/";
     _apiKey = "apikey=2f256236a0d304584b979a58bc9ce4c0";
+    _baseOffset = 0;
     //_apiPrivateKey = "fb687c848495ac35c5e96c560fa8bae8146e2b6f";
 
     getResource = async (url) => {
@@ -32,9 +32,8 @@ class MarvelService {
         throw new Error(`Could not featch ${url}, status: ${response.status}`)
     } 
 
-    getCharacters = async (limit) => {
-        let res = await this.getByAxios(`${this._apiBase}characters?limit=${limit}&offset=${this.offset}&${this._apiKey}`)
-        this.offset += limit;
+    getCharacters = async (limit, offset = this._baseOffset) => {
+        let res = await this.getByAxios(`${this._apiBase}characters?limit=${limit}&offset=${offset}&${this._apiKey}`)
         return res.data.results.map(this._transformCharacter);
     }
     getCharacterByID = async (id) => {

@@ -1,9 +1,11 @@
 import { Component } from 'react';
+import PropTypes from "prop-types";
+
+import './charInfo.scss';
+
 import { hasImage } from "../randomChar/RandomChar";
 
 import MarvelService from '../../services/MarvelService';
-
-import './charInfo.scss';
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Skeleton from "../skeleton/Skeleton";
@@ -24,8 +26,6 @@ class CharInfo extends Component {
         if (this.props.charId !== prevProps.charId)
             this.updateChar();
     }
-   
-
 
     updateChar = () => {
         const {charId} = this.props;
@@ -36,8 +36,6 @@ class CharInfo extends Component {
         this.marvelService.getCharacterByID(charId)
             .then(this.onCharLoaded)
             .catch(this.onError)
-
-        this.faf.fa = 0
     }
 
     onCharLoaded = (char) => {
@@ -110,6 +108,9 @@ const View = ({char}) => {
                 </ul>
         </>
     )
+}
+CharInfo.propTypes = {
+    charId: PropTypes.number, 
 }
 
 export default CharInfo;
